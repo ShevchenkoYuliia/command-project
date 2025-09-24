@@ -22,40 +22,69 @@ The project is a **website for selling jewelry**, including product listings, de
 Jewelry_Store/
 │
 ├── app/ # Main application logic
+
 │ ├── auth.py # User authentication and authorization
+
 │ ├── database.py # Database connection
+
 │ ├── models.py # SQLAlchemy models
+
 │ ├── routes.py # Web routes
+
 │ ├── schemas.py # Validation schemas
+
 │ └── templates/ # Jinja2 HTML templates
+
 │ ├── admin.html
+
 │ ├── cart.html
+
 │ ├── catalog.html
+
 │ ├── checkout.html
+
 │ ├── details.html
+
 │ ├── email_already_registered.html
+
 │ ├── error.html
+
 │ ├── index.html
+
 │ ├── orders.html
+
 │ ├── order-success.html
+
 │ └── registration.html
 │
 ├── static/ # Static files (CSS, JS, images)
+
 │ ├── styles/
+
 │ ├── scripts/
+
 │ └── images/
 │
 ├── tests/ # Unit and integration tests
+
 │ ├── conftest.py
+
 │ ├── test_auth.py
+
 │ ├── test_database.py
+
 │ ├── test_models.py
+
 │ ├── test_routes.py
+
 │ └── test_schemas.py
 │
 ├── init.py # App initialization
+
 ├── app.db # SQLite database file
+
 ├── requirements.txt # Dependencies
+
 └── run.py # Entry point to start the server
 
 
