@@ -20,7 +20,9 @@ The project is a **website for selling jewelry**, including product listings, de
 ## 📁 Project Structure
 
 Jewelry_Store/
+
 │
+
 ├── app/ # Main application logic
 
 │ ├── auth.py # User authentication and authorization
@@ -56,7 +58,9 @@ Jewelry_Store/
 │ ├── order-success.html
 
 │ └── registration.html
+
 │
+
 ├── static/ # Static files (CSS, JS, images)
 
 │ ├── styles/
@@ -64,7 +68,9 @@ Jewelry_Store/
 │ ├── scripts/
 
 │ └── images/
+
 │
+
 ├── tests/ # Unit and integration tests
 
 │ ├── conftest.py
@@ -78,7 +84,9 @@ Jewelry_Store/
 │ ├── test_routes.py
 
 │ └── test_schemas.py
+
 │
+
 ├── init.py # App initialization
 
 ├── app.db # SQLite database file
