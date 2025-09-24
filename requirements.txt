@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+
+jinja2
+sqlalchemy
+sqlmodel
+
+pydantic==2.0.2
+python-multipart==0.0.6
+
+httpx==0.24.1
+pytest==7.3.1

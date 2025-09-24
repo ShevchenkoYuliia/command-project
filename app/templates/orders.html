@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Замовлення</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles/orders.css">
+</head>
+
+<body>
+    <div class="orders-container">
+        <h1 class="orders-title">📦 <span>Мої замовлення</span></h1>
+
+        {% if orders %}
+        <div class="orders-list">
+            {% for order in orders %}
+            <div class="order-card">
+                <div class="order-header">
+                    <h2>Замовлення #{{ order.id }}</h2>
+                    <div class="order-status status-{{ order.status }}">{{ order.status }}</div>
+                </div>
+                <div class="order-date">Дата: {{ order.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+                <div class="order-total">Сума: {{ order.total_price }} грн.</div>
+
+                <div class="order-details">
+                    <h3>Деталі замовлення:</h3>
+                    <div class="order-items">
+                        {% for item in order.items %}
+                        <div class="order-item">
+                            <div class="item-name">{{ item.product_name }}</div>
+                            <div class="item-price">{{ item.price }} грн. x {{ item.quantity }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="order-delivery">
+                        <h3>Інформація про доставку:</h3>
+                        <div class="delivery-phone">Телефон: {{ order.phone }}</div>
+                        <div class="delivery-address">Адреса: {{ order.address }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-orders">
+            <p>У вас ще немає замовлень</p>
+            <a href="/catalog" class="catalog-link">Перейти до каталогу</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <a href="/" class="side-gradient-button" title="Повернутися на головну">⬅ Головна</a>
+</body>
+
+</html>

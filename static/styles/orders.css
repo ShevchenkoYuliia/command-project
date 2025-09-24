@@ -1,0 +1,280 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e8cfe9;
+    color: #3e2723;
+    background-image: 
+        linear-gradient(135deg, rgba(50, 40, 35, 0.03) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(50, 40, 35, 0.03) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(50, 40, 35, 0.03) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(50, 40, 35, 0.03) 25%, transparent 25%);
+    background-size: 60px 60px;
+    background-repeat: repeat;
+}
+
+.orders-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+}
+
+.orders-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.orders-title span {
+    color: #5d4037;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.order-card {
+    background-color: #f5f1f5;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 25px rgba(114, 51, 187, 0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.order-header h2 {
+    background: linear-gradient(270deg, #db7ee7, #ad3e9b, #d64399);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 6s ease infinite;
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.order-status {
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    text-transform: capitalize;
+}
+
+/* Статуси */
+.status-новый {
+    background-color: #ede7f6;
+    color: #5e35b1;
+}
+
+.status-обработка {
+    background-color: #fff8e1;
+    color: #ff8f00;
+}
+
+.status-выполнен {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-отменен {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.order-date,
+.order-total {
+    margin-bottom: 0.75rem;
+    color: #5d4037;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border-radius: 8px;
+    position: relative;
+    background-color: rgba(245, 236, 242, 0.6);
+}
+
+.order-total {
+    font-weight: bold;
+}
+
+.order-date:hover {
+    background-color: rgba(238, 168, 238, 0.3);
+    transform: translateX(4px);
+}
+
+.order-total:hover {
+    background-color: rgba(151, 50, 151, 0.3);
+    transform: translateX(4px);
+}
+
+.order-details {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.order-details h3 {
+    color: #3e2723;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.order-items {
+    margin-bottom: 1.5rem;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #e0e0e0;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border-radius: 8px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.order-item:hover {
+    background-color: rgba(238, 168, 238, 0.3);
+    transform: translateX(4px);
+}
+
+.delivery-phone,
+.delivery-address {
+    margin-bottom: 0.5rem;
+    background-color: rgba(245, 236, 242, 0.6);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    position: relative;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.delivery-phone:hover,
+.delivery-address:hover {
+    background-color: rgba(238, 168, 238, 0.3);
+    transform: translateX(4px);
+}
+
+.no-orders {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #f5ebf2;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+}
+
+.catalog-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #674e94;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 transparent;
+}
+
+.catalog-link:hover {
+    background-color: #651c77;
+    box-shadow: 0 4px 12px rgba(150, 74, 127, 0.4);
+    transform: translateY(-2px);
+}
+
+.side-gradient-button {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    padding: 14px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #7e44ff, #b037ce, #df7fbc);
+    background-size: 300% 300%;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 0 12px rgba(191, 97, 255, 0.5);
+    animation: gradientFlow 6s ease infinite, floatUpDown 3s ease-in-out infinite, fadeIn 1.2s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.side-gradient-button:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 0 25px rgba(223, 127, 188, 0.9), 0 0 50px rgba(191, 97, 255, 0.6);
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floatUpDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

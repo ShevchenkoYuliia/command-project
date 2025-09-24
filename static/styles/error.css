@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.error-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.exclamation {
+    position: absolute;
+    color: rgba(255, 0, 76, 0.2);
+    font-size: 6rem;
+    font-weight: bold;
+    animation-name: float-exclamation;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    z-index: -1;
+}
+
+.error-text {
+    position: absolute;
+    color: rgba(255, 0, 76, 0.15);
+    font-size: 3rem;
+    font-weight: bold;
+    animation-name: float-error;
+    animation-duration: 8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    z-index: -1;
+}
+
+@keyframes float-exclamation {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes float-error {
+    0% {
+        transform: translateX(-100vw) translateY(random) scale(0.7);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(100vw) translateY(random) scale(1.1);
+        opacity: 0;
+    }
+}
+
+.error-container {
+    max-width: 550px;
+    width: 90%;
+    padding: 3rem;
+    background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(255, 0, 76, 0.3),
+                0 0 10px rgba(255, 0, 76, 0.2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 0, 76, 0.3);
+    z-index: 10;
+}
+
+.error-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 76, 0.1) 0%, rgba(10, 10, 10, 0) 70%);
+    animation: pulse 5s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+.error-icon {
+    font-size: 4rem;
+    color: #ff004c;
+    margin-bottom: 1.5rem;
+    animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) 1s both;
+    transform: translate3d(0, 0, 0);
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.error-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.error-title .highlight {
+    color: #ff004c;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 15px rgba(255, 0, 76, 0.5);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.error-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff004c, transparent);
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 0, 76, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 0, 76, 0.9), 0 0 30px rgba(255, 0, 76, 0.5);
+    }
+}
+
+.error-message {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    color: #f2f2f2;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-link {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ff004c, #ce0048);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 0, 76, 0.4);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.error-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 0, 76, 0.6);
+}
+
+.error-link:active {
+    transform: translateY(1px);
+}
+
+.error-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.error-link:hover::before {
+    left: 100%;
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before, .glitch::after {
+    content: 'ERROR';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: #0ff;
+    z-index: -1;
+    animation: glitch-effect 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    animation-delay: 0.1s;
+}
+
+.glitch::after {
+    color: #f0f;
+    z-index: -2;
+    animation: glitch-effect 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    animation-delay: 0.2s;
+}
+
+@keyframes glitch-effect {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(3px, 3px);
+    }
+    80% {
+        transform: translate(3px, -3px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}

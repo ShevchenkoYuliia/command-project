@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles/details.css" />
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <title>Деталі</title>
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="page-container">
+        <section class="top-menu-section">
+            <div class="menu-wrapper">
+                <div class="menu-bar">
+                    <div class="menu-left">
+                        <a href="/catalog"><span class="menu-icon">☰</span> Каталог товарів</a>
+                        <div id="catalogDropdown" class="catalog-dropdown">
+                            <ul>
+                                <li><a href="/catalog"><strong>Усі товари</strong></a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="divider"></div>
+                        <a href="/index">Про нас</a>
+                    </div>
+
+                    <div class="menu-logo">
+                        <span>
+                            <img src="/static/images/diamond1.png" alt="Diamond" />
+                        </span> Imperial Grace <span>
+                            <img src="/static/images/diamond1.png" alt="Diamond" />
+                        </span>
+                    </div>
+
+                    <div class="menu-right">
+                        <!-- <span class="icon"><i class="fas fa-search"></i></span> -->
+                        <div class="search-wrapper">
+                            <span title="Пошук" class="icon search-trigger"><i class="fas fa-search"></i></span>
+                            <div class="search-box">
+                                <input type="text" id="search-input" placeholder="Пошук товару." />
+                                <ul id="search-results"></ul>
+                            </div>
+                        </div>
+
+                        <span title="Уподобані" class="icon"><i class="far fa-heart"></i></span>
+                        <div class="cart-wrapper">
+                            <div class="cart-icon-wrapper">
+                                <a title="Кошик" href="/cart" id="go-to-cart" class="icon"><i class="fas fa-bag-shopping"></i>
+                                    <span id="cart-count" class="cart-count">0</span>
+                                </a>
+                            </div>
+                            <div id="empty-message" class="empty-message">Кошик порожній</div>
+                        </div>
+                        <div class="user-info" style="color: rgb(15, 15, 15); font-size: 1.5rem;">
+                            {% if user %}
+                            <a title="Замовлення" href="/my-orders" class="icon"><i class="fas fa-box-open"></i></a>
+                            <a title="Вихід" href="/logout" class="icon"><i class="fas fa-sign-out-alt"></i></a>
+                            {% else %}
+                            <a title="Вхід" href="/registration" id="go-profile" class="icon"><i class="far fa-user"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <div class="content-wrapper">
+            <div class="background-animation"></div>
+
+            <div class="product-wrapper">
+                <div class="product-card1">
+                    <div class="sparkle-wrapper">
+                        <div class="sparkles"></div>
+                        <div class="product-image">
+                            <img src="{{ product.image_url }}" alt="{{ product.name }}" />
+                        </div>
+                    </div>
+                    <div class="product-info1">
+                        <h3 class="letter-by-letter" data-text='{{ product.name }}'></h3>
+                        <h3 class="letter-by-letter" data-text= '{{ product.description }}'></h3>
+                        <p class="price1">Ціна: <span>{{ product.price }} грн.</span></p>
+                        <button class="buy-btn" data-id="{{ product.id }}" data-name="{{ product.name }}"
+                            data-price="{{ product.price }}" data-category="{{ product.category }}"
+                            data-material="{{ product.material }}" data-color="{{ product.color }}"
+                            data-image="{{ product.image_url }}">
+                            Купити
+                            <span class="flash"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sparkle-layer"></div>
+            <div id="cursor-trail"></div>
+        </div>
+    </div>
+
+    <script src="/static/scripts/script.js"></script>
+    <script src="/static/scripts/details.js"></script>
+</body>
+
+</html>

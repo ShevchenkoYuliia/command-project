@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imperial Grace</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles/catalog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<body>
+    <section class="top-menu-section">
+        <div class="menu-wrapper">
+            <div class="menu-bar">
+                <div class="menu-left">
+                    <a href="/index" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> На головну
+                    </a>
+
+                    <div class="divider"></div>
+                </div>
+
+                <div class="menu-logo">
+                    <span>
+                        <img src="/static/images/diamond1.png" alt="Diamond" />
+                    </span> Imperial Grace <span>
+                        <img src="/static/images/diamond1.png" alt="Diamond" />
+                    </span>
+                </div>
+
+                <div class="menu-right">
+                    <div class="search-wrapper">
+                            <span title="Пошук" class="icon search-trigger"><i class="fas fa-search"></i></span>
+                            <div class="search-box">
+                                <input type="text" id="search-input" placeholder="Пошук товару." />
+                                <ul id="search-results"></ul>
+                            </div>
+                        </div>
+
+                        <span title="Уподобані" class="icon"><i class="far fa-heart"></i></span>
+                        <div class="cart-wrapper">
+                            <div class="cart-icon-wrapper">
+                                <a title="Кошик" href="/cart" id="go-to-cart" class="icon"><i class="fas fa-bag-shopping"></i>
+                                    <span id="cart-count" class="cart-count">0</span>
+                                </a>
+                            </div>
+                            <div id="empty-message" class="empty-message">Кошик порожній</div>
+                        </div>
+                        <div class="user-info" style="color: rgb(15, 15, 15); font-size: 1.5rem;">
+                            {% if user %}
+                            <a title="Замовлення" href="/my-orders" class="icon"><i class="fas fa-box-open"></i></a>
+                            <a title="Вихід" href="/logout" class="icon"><i class="fas fa-sign-out-alt"></i></a>
+                            {% else %}
+                            <a title="Вхід" href="/registration" id="go-profile" class="icon"><i class="far fa-user"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<div class="catalog-filter-section">
+    <div class="catalog-filter">
+        <label><i class="fas fa-gem filter-icon"></i>Категорія</label>
+        {% for category in categories %}
+        <span data-filter-type="category" data-value="{{ category }}" class="{% if selected_category == category %}active-filter{% endif %}">
+            ▣ {{ category }}
+        </span>
+        {% endfor %}
+    </div>
+    <div class="catalog-filter">
+        <label><i class="fas fa-gem filter-icon"></i>Матеріал</label>
+        {% for material in materials %}
+        <span data-filter-type="material" data-value="{{ material }}" class="{% if selected_material == material %}active-filter{% endif %}">
+            ▣ {{ material }}
+        </span>
+        {% endfor %}
+    </div>
+    <div class="catalog-filter">
+        <label><i class="fas fa-palette filter-icon"></i>Колір</label>
+        {% for color in colors %}
+        <span data-filter-type="color" data-value="{{ color }}" class="{% if selected_color == color %}active-filter{% endif %}">
+            ▣ {{ color }}
+        </span>
+        {% endfor %}
+    </div>
+
+    {% if selected_category or selected_material or selected_color %}
+    <button id="clear-all-filters" class="catalog-filter">
+        <i class="fas fa-times"></i> Очистити всі фільтри
+    </button>
+    {% endif %}
+</div>
+
+    <section class="catalog-grid">
+    {% for product in products %}
+    <div class="product-card" 
+         data-category="{{ product.category }}"
+         data-material="{{ product.material }}"
+         data-color="{{ product.color }}">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p class="price">
+            Ціна: <strong>{{ product.price }} ₴</strong>
+            <button class="add-to-cart-btn" 
+                data-id="{{ product.id }}" 
+                data-name="{{ product.name }}"
+                data-price="{{ product.price }}" 
+                data-image="{{ product.image_url }}" 
+                title="Додати до кошика">
+                <i class="fas fa-shopping-cart cart-icon"></i>
+            </button>
+        </p>
+        <a href="/details/{{ product.id }}" class="detail-btn">
+            Детальніше <i class="fas fa-chevron-right arrow-icon"></i>
+        </a>
+    </div>
+    {% endfor %}
+    </section>
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-logo">Imperial Grace</h2>
+                <p class="phone">0 800 87 59 23</p>
+                <p class="schedule">Безкоштовно по Україні з усіх телефонів</p>
+                <p>Пн-Пт 09:00 – 20:00<br>Сб-Нд 10:00 – 19:00</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h3>Інформація</h3>
+                <img src="/static/images/diamond1.png" alt="Icon" class="footer-icon" />
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#">Акції</a></li>
+                        <li><a href="#">Оплата та доставка</a></li>
+                        <li><a href="#">Новини</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Колекції</a></li>
+                        <li><a href="#">Обмін та повернення</a></li>
+                        <li><a href="#">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="custom-alert" class="custom-alert">Товар додано до кошика!</div>
+    <script src="/static/scripts/catalog.js"></script>
+    <script src="/static/scripts/search.js"></script>
+    <script src="/static/scripts/details.js"></script>
+
+</body>
+
+</html>

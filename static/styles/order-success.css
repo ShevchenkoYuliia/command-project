@@ -1,0 +1,345 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(-45deg, #f5e6e8, #d1cfe2, #e4bad4, #c9d6ff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #3e2723;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+
+.success-container {
+    max-width: 840px;
+    margin: 4rem auto;
+    padding: 1rem;
+}
+
+.success-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.success-icon {
+    color: #43a047;
+    font-size: 4.5rem;
+    margin-bottom: 1.2rem;
+    animation: pop 0.4s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.success-icon i {
+    animation: bounce 1s ease infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.success-title {
+    font-size: 2rem;
+    color: #4e342e;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+}
+
+.success-message {
+    background: rgba(250, 238, 238, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.order-summary {
+    text-align: left;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: #fefcfb;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.order-summary h2 {
+    color: #4e342e;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.4rem;
+}
+
+.summary-section h3 {
+    color: #5d4037;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.success-title,
+.success-message,
+.summary-section h3 {
+    transition: color 0.3s ease;
+}
+
+.success-title:hover,
+.summary-section h3:hover {
+    color: #9d30e0;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #ddd;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+.order-item:hover {
+    transform: scale(1.02);
+    background-color: #f9f4f4;
+}
+
+.total-price {
+    text-align: right;
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.contact-info div {
+    margin-bottom: 0.6rem;
+}
+
+.actions {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.action-button {
+    padding: 0.9rem 1.7rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.25s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+}
+
+.action-button:hover {
+    animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.home-button {
+    background: linear-gradient(135deg, #ffe0e0, #ffc4c4);
+    color: #4e342e;
+}
+
+.orders-button {
+    background: linear-gradient(135deg, #d1c4e9, #b39ddb);
+    color: #4e342e;
+}
+
+.home-button:hover {
+    background: linear-gradient(135deg, #da7676, #c34444);
+}
+
+.orders-button:hover {
+    background: linear-gradient(135deg, #987eca, #6e46b8);
+}
+
+.balloons-container {
+    position: fixed;
+    bottom: 0;
+    width: 100px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.balloons-container.left {
+    left: 0;
+}
+
+.balloons-container.right {
+    right: 0;
+}
+
+.balloon {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float-up linear forwards;
+    opacity: 0.95;
+    pointer-events: none;
+    transform-origin: center;
+}
+
+.balloon-body {
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2),
+                2px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.heart-body {
+    width: 50px;
+    height: 50px;
+    background: currentColor;
+    position: relative;
+    transform: rotate(45deg);
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.heart-body:before,
+.heart-body:after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: currentColor;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: none;
+}
+
+.heart-body:before {
+    top: -25px;
+    left: 0;
+}
+
+.heart-body:after {
+    top: 0;
+    left: -25px;
+}
+
+.balloon-string {
+    width: 1px;
+    height: 60px;
+    position: relative;
+    margin-top: -5px;
+    overflow: visible;
+}
+
+.balloon-string::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #888;
+    animation:
+        wave 2s infinite ease-in-out,
+        swing 3s infinite ease-in-out;
+    transform-origin: top center;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(2px) rotate(3deg);
+    }
+    50% {
+        transform: translateX(-1px) rotate(-2deg);
+    }
+    75% {
+        transform: translateX(1px) rotate(1deg);
+    }
+}
+
+@keyframes swing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+.balloon.heart {
+    padding-top: 15px;
+}
+
+.balloon.heart .heart-body {
+    margin-top: 0;
+}
+
+.balloon.heart .balloon-string {
+    height: 70px;
+    margin-top: 0;
+}
+
+.balloon.heart .balloon-string::before {
+    background: linear-gradient(to bottom,
+        #888 0%,
+        #777 30%,
+        #666 70%,
+        #555 100%);
+    top: 10px;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-130vh) scale(0.9);
+        opacity: 0;
+    }
+}
